@@ -1,11 +1,11 @@
 {
   "name": "vue-linkify-vue3",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A simple Vue directive to turn URL's and emails into clickable links. Maintained fork with Vue 2.7+ and Vue 3 support.",
   "main": "dist/vue-linkify.min.js",
   "scripts": {
     "lint": "eslint index.js",
-    "build": "eslint index.js && BABEL_ENV=production && babel index.js -o ./dist/vue-linkify.min.js",
+    "build": "eslint index.js && webpack --config webpack.config.js",
     "test": "npm build && karma start test/unit/karma.conf.js --single-run"
   },
   "keywords": [
@@ -33,6 +33,7 @@
   "homepage": "https://github.com/shekh/vue-linkify#readme",
   "license": "MIT",
   "dependencies": {
+    "linkify-html": "^4.3.2",
     "linkifyjs": "^4.1.3"
   },
   "peerDependencies": {
@@ -47,8 +48,8 @@
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.27.0",
     "karma": "^6.4.4",
-    "karma-mocha": "^2.0.1",
     "karma-chrome-launcher": "^3.2.0",
+    "karma-mocha": "^2.0.1",
     "karma-sinon-chai": "^2.0.2",
     "karma-webpack": "^5.0.1",
     "mocha": "^10.7.3",

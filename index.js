@@ -1,5 +1,4 @@
-/*global define*/
-import linkify from 'linkifyjs/html'
+import linkify from 'linkify-html'
 
 const linkifiedDirective = {
   mounted(el, binding) {
@@ -17,21 +16,9 @@ const linkifiedDirective = {
   }
 }
 
-// ES Module export (for modern bundlers)
-export default linkifiedDirective
-
-// CommonJS export (for Node.js)
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = linkifiedDirective
-  module.exports.default = linkifiedDirective
-}
-
-// AMD export
-if (typeof define === 'function' && define.amd) {
-  define([], function () { return linkifiedDirective })
-}
-
 // Browser global export
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.directive('linkified', linkifiedDirective)
 }
+
+export default linkifiedDirective
