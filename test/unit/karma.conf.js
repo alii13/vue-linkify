@@ -22,7 +22,7 @@ module.exports = function(config) {
     exclude: [
     ],
 
-    reporters: ['spec'],
+    reporters: ['progress'],
 
 
     // preprocess matching files before serving them to the browser
@@ -32,18 +32,26 @@ module.exports = function(config) {
     },
 
     webpack: {
+      mode: 'development',
       module: {
-        loaders: [{
+        rules: [{
           test: /\.js$/,
-          loader: 'babel',
+          loader: 'babel-loader',
           exclude: /node_modules/
         }]
       },
       resolve: {
         alias: {
-          'vue$': 'vue/dist/vue.common.js'
+          'vue$': 'vue/dist/vue.esm-bundler.js'
         }
-      }
+      },
+      plugins: [
+        new (require('webpack')).DefinePlugin({
+          __VUE_OPTIONS_API__: JSON.stringify(true),
+          __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
+          __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false)
+        })
+      ]
     },
 
     // test results reporter to use
@@ -71,7 +79,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['ChromeHeadless'],
 
 
     // Continuous Integration mode

@@ -1,13 +1,15 @@
-# vue-linkify [![Build Status](https://travis-ci.org/phanan/vue-linkify.svg?branch=master)](https://travis-ci.org/phanan/vue-linkify)
+# vue-linkify
 
 > A simple Vue directive to turn URL's and emails into clickable links. Based on SoapBox's [Linkify](https://github.com/SoapBox/linkifyjs).
+
+**Note:** This is a maintained fork of the [original vue-linkify](https://github.com/phanan/vue-linkify) which is no longer maintained. This version includes updated dependencies, security fixes, and supports both Vue 2.7+ and Vue 3.
 
 ## Install
 
 This directive can be installed as a module:
 
 ``` bash
-$ npm install vue-linkify
+$ npm install vue-linkify-vue3
 ```
 
 or, if you're not in a module environment, just include it as a `<script>`.
@@ -16,7 +18,18 @@ or, if you're not in a module environment, just include it as a `<script>`.
 
 In a browser environment, you should now have a `v-linkified` directive set up for free. If you're in a module environment, just `import` and register it as you please:
 
+**For Vue 3:**
 ``` js
+import { createApp } from 'vue'
+import linkify from 'vue-linkify'
+
+const app = createApp(App)
+app.directive('linkified', linkify)
+```
+
+**For Vue 2:**
+``` js
+import Vue from 'vue'
 import linkify from 'vue-linkify'
 
 Vue.directive('linkified', linkify)
@@ -67,6 +80,17 @@ Hello from <a href="http://vuejs.org" class="foo" target="_blank">vuejs.org</a>
 
 A list of available options is available [here](http://soapbox.github.io/linkifyjs/docs/options.html).
 
+## Maintainer
+
+This fork is maintained by **shekh**.
+
+## Credits
+
+Original package created by [Phan An](http://phanan.net).
+
 ## License
 
-MIT &copy; [Phan An](http://phanan.net)
+MIT
+
+Original work &copy; [Phan An](http://phanan.net)  
+Modified work &copy; shekh
